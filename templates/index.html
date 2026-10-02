@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Classifier</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📧 Email Spam Classifier</h1>
+
+        <p class="subtitle">
+            Detect whether an email is <b>Spam</b> or <b>Ham</b> using Machine Learning
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <textarea
+                name="email"
+                rows="10"
+                placeholder="Paste your email here..."
+                required>{{ email if email else "" }}</textarea>
+
+            <button type="submit">
+                Predict
+            </button>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="result">
+
+            <h2>Prediction</h2>
+
+            <h3>{{ prediction }}</h3>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
